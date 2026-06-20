@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ name }}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    img {
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>{{ name }}</h1>
+  <img src="{{ image }}" alt="photo">
+  <div>
+    <p><b>Description:</b> {{ description }}</p>
+    <p><b>Location:</b> {{ location }}</p>
+    <p><b>Server:</b> {{ hostname }}</p>
+  </div>
+</body>
+</html>
