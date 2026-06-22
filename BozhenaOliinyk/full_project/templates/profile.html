@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile — BirdWatcher</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/catalog.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" href="/static/css/bird_popup.css">
+</head>
+<body>
+    <div class="tropical-bg-leaves">
+        <div class="leaf-vector monstera-leaf-top"></div>
+        <div class="leaf-vector palm-leaf-mid-right"></div>
+        <div class="leaf-vector monstera-leaf-mid-left"></div>
+        <div class="leaf-vector palm-leaf-bottom"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-left">
+            <a href="/" style="text-decoration: none; font-size: 24px;">🦜</a>
+        </div>
+        <div class="header-center">
+            <h1 class="brand-title" style="cursor: pointer;" onclick="window.location.href='/'">BirdWatcher</h1>
+        </div>
+        <div class="header-right">
+            <a href="/" class="sign-in-text" style="text-decoration: none; margin-right: 10px;">Home</a>
+            <button class="profile-avatar-btn" onclick="window.location.href='/profile'">BW</button>
+        </div>
+    </header>
+
+    <main class="catalog-container">
+        <h2 class="profile-section-title">My Birds</h2>
+
+        <div class="catalog-grid">
+            <div class="bird-card add-bird-trigger-card" id="addBirdCard">
+                <div class="add-bird-inner">
+                    <span class="add-icon">+</span>
+                    <span class="add-text">Add New Bird</span>
+                </div>
+            </div>
+
+            {% for bird in birds %}
+            <div class="bird-card user-bird-card" data-id="{{ bird.id }}" data-name="{{ bird.name }}" data-location="{{ bird.location }}" data-image="{{ bird.image }}">
+                <div class="card-image-wrapper">
+                    <img src="{{ bird.image }}" alt="{{ bird.name }}" class="bird-image">
+                    <button class="card-edit-btn" aria-label="Edit bird">
+                        <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-info-left">
+                        <h3 class="bird-species">{{ bird.name }}</h3>
+                        <p class="bird-location">📍 {{ bird.location }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <div class="blur-overlay" id="profileBlurOverlay"></div>
+
+    <div class="bird-popup" id="birdPopup">
+        <button class="popup-close" id="closeBirdPopupBtn">&times;</button>
+        <h2 class="popup-title" id="birdPopupTitle">Edit Bird</h2>
+
+        <form class="bird-form" id="birdForm" onsubmit="return false;">
+            <div class="popup-image-upload-wrapper">
+                <img src="" alt="Bird Preview" id="popupBirdPreview" class="popup-preview-img">
+                <div class="upload-hover-overlay">
+                    <label for="birdImageFileInput" class="upload-btn-label">Upload New Photo</label>
+                    <input type="file" id="birdImageFileInput" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="birdNameInput" required placeholder=" ">
+                <label for="birdNameInput">Bird Species Name</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="birdLocationInput" required placeholder=" ">
+                <label for="birdLocationInput">Location (Where it was photographed)</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Save</button>
+        </form>
+    </div>
+
+    <script src="/static/js/profile.js"></script>
+</body>
+</html>

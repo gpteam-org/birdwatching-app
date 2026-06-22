@@ -1,0 +1,127 @@
+.auth-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 400px;
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow: 0 20px 50px rgba(23, 21, 94, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+.auth-popup.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    transition: var(--transition-smooth);
+}
+.popup-close:hover {
+    color: var(--text-main);
+}
+
+.popup-title {
+    font-size: 24px;
+    color: var(--color-blue-dark);
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Animated Floating Label Fields */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+.input-group input {
+    width: 100%;
+    padding: 16px;
+    border: 1.5px solid rgba(47, 105, 139, 0.2);
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    background: transparent;
+    transition: var(--transition-smooth);
+}
+.input-group input:focus {
+    border-color: var(--color-blue-royal);
+}
+.input-group label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 15px;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+    background-color: #FFFFFF;
+    padding: 0 4px;
+}
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: 0;
+    font-size: 12px;
+    color: var(--color-blue-royal);
+    font-weight: 500;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--color-blue-royal), var(--color-blue-dark));
+    color: #FFFFFF;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(33, 58, 117, 0.2);
+    transition: var(--transition-smooth);
+    margin-top: 10px;
+}
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(33, 58, 117, 0.3);
+}
+
+.popup-toggle-mode {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+.toggle-link-btn {
+    background: none;
+    border: none;
+    color: var(--color-teal-deep);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+}
+.toggle-link-btn:hover {
+    color: var(--color-blue-royal);
+}
